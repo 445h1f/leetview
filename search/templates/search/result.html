@@ -1,0 +1,75 @@
+{% extends 'search/base.html' %}
+{% load static %}
+{% block css %}
+<style>
+  body {
+      background-image: url("{% static 'images/result.jpg' %}");
+      background-size: cover;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+  }
+
+  .info-card {
+      background-color: rgba(0, 0, 0, 0.405);
+      color: azure;
+      max-width: 95vw;
+      width: 80vw;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+
+</style>
+{% endblock %}
+
+{% block body %}
+  <div class="info-card">
+    <div class="row mb-3">
+      <div class="col-2">
+        <strong>Problem No.:</strong>
+      </div>
+      <div class="col-10">
+        {{ id }}
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-2">
+        <strong>Name:</strong>
+      </div>
+      <div class="col-10">
+        {{ name }}
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-2">
+        <strong>Difficulty:</strong>
+      </div>
+      <div class="col-10">
+        {{ difficulty|title }}
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-2">
+        <strong>Companies:</strong>
+      </div>
+      <div class="col-10">
+        {% for key, value in companies.items %}
+          <span class="badge text-bg-warning">{{ key|title }}<span class="badge text-bg-light ms-1">{{ value }}</span></span>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-2">
+        <strong>Topics:</strong>
+      </div>
+      <div class="col-10">
+        {% for tag in tags %}
+          <span class="badge text-bg-info">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'search/base.html' %}
+{% load static %}
+
+{% block css %}
+<style>
+  body {
+    background-image: url("{% static 'images/result.jpg' %}");
+    background-size: cover; /* Cover the entire viewport */
+    background-attachment: fixed; /* Fixed background */
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+  <div class="row">
+      <!-- <div class="col"> -->
+          <form class="input-group" action="{% url 'search:search' %}" method="post">
+              {% csrf_token %}
+              <input style="width: 60vw; height: 7vh; border-top-left-radius: 6px;border-bottom-left-radius: 6px" type="url" name="url" class="form-control" placeholder="https://leetcode.com/problems/...">
+              <button style="width: 10vw;" class="btn btn-primary" type="button">Search</button>
+          </form>
+      <!-- </div> -->
+  </div>
+</div>
+{% endblock %}
